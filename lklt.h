@@ -20,15 +20,15 @@
 
 #endif
 
-typedef struct Elt Elt;
-struct Elt{
+typedef struct LkltElt LkltElt;
+struct LkltElt{
 	TYPE value;
-	Elt* nextElt;
+	LkltElt* nextElt;
 };
 
 typedef struct Lklt Lklt;
 struct Lklt {
-	Elt* firstElt;
+	LkltElt* firstElt;
 	int length;
 };
 

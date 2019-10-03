@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include "lklt.h"
+#include "stack.h"
 
 int main(int argc , char* argv[]) {
 	int entiers[6] = {25, 46, 12, 2, 33, 35};
+
+	//*** Listes chaînées ***
+	printf("***** Listes chaînées *****\n");
 	Lklt *liste = lkltinit();
 	for (int i=0; i<6; i++)
 		lkltappend(liste, entiers[i]);
@@ -18,8 +22,31 @@ int main(int argc , char* argv[]) {
 	lkltprint(liste);
 	printf("Taille de la liste: %d, Normalement: 6\n", lkltlength(liste));
 	lkltdel(liste);
+
+	//*** Piles ***
+	printf("\n***** Piles *****\n");
+	Stack *pile = stackInit();
+	printf("Pile normalement vide, vaut: %d\n", staisempty(pile));
+	for (int i=0; i<6; i++)
+		stapush(pile, entiers[i]);
+	printf("Pile normalement remplie, vaut: %d\n", staisempty(pile));
+	printf("Taille de la pile: %d, Normalement: 6\n", stasize(pile));
+	printf("[35, 33, 2, 12, 46, 25] (normalement)\n");
+	staprint(pile);
+	printf("Element supprimé: %d, Normalement: 35\n", stapop(pile));
+	printf("Element supprimé: %d, Normalement: 33\n", stapop(pile));
+	printf("Taille de la pile: %d, Normalement: 4\n", stasize(pile));
+	printf("[2, 12, 46, 25] (normalement)\n");
+	staprint(pile);
+	printf("Element de tête non dépilé: %d, Normalement: 2\n", stapeek(pile));
+	for (int i=0; i<4; i++)
+		stapop(pile);
+	printf("Taille de la pile: %d, Normalement: 0\n", stasize(pile));
+	printf("Pile normalement vide, vaut: %d\n", staisempty(pile));
+	staclear(pile);
 	printf("Normalement rien\n");
-	lkltprint(liste);
+	staprint(pile);
+
 	return 0;
 }
 
