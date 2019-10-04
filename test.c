@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "lklt.h"
 #include "stack.h"
+#include "queue.h"
 
 int main(int argc , char* argv[]) {
 	int entiers[6] = {25, 46, 12, 2, 33, 35};
@@ -33,19 +34,41 @@ int main(int argc , char* argv[]) {
 	printf("Taille de la pile: %d, Normalement: 6\n", stasize(pile));
 	printf("[35, 33, 2, 12, 46, 25] (normalement)\n");
 	staprint(pile);
-	printf("Element supprimé: %d, Normalement: 35\n", stapop(pile));
-	printf("Element supprimé: %d, Normalement: 33\n", stapop(pile));
+	printf("Elément supprimé: %d, Normalement: 35\n", stapop(pile));
+	printf("Elément supprimé: %d, Normalement: 33\n", stapop(pile));
 	printf("Taille de la pile: %d, Normalement: 4\n", stasize(pile));
 	printf("[2, 12, 46, 25] (normalement)\n");
 	staprint(pile);
-	printf("Element de tête non dépilé: %d, Normalement: 2\n", stapeek(pile));
+	printf("Elément de tête non dépilé: %d, Normalement: 2\n", stapeek(pile));
 	for (int i=0; i<4; i++)
 		stapop(pile);
 	printf("Taille de la pile: %d, Normalement: 0\n", stasize(pile));
 	printf("Pile normalement vide, vaut: %d\n", staisempty(pile));
 	staclear(pile);
+
+	//*** Files ***
+	printf("\n***** Files *****\n");
+	Queue *file = queueInit();
+	printf("File normalement vide, vaut: %d\n", queisempty(file));
+	for (int i=0; i<6; i++)
+		queunshift(file, entiers[i]);
+	printf("File normalement remplie, vaut: %d\n", queisempty(file));
+	printf("Taille de la file: %d, Normalement: 6\n", quesize(file));
+	printf("[35, 33, 2, 12, 46, 25] (normalement)\n");
+	queprint(file);
+	printf("Elément supprimé: %d, Normalement: 25\n", queshift(file));
+	printf("Elément supprimé: %d, Normalement: 46\n", queshift(file));
+	printf("Taille de la file: %d, Normalement: 4\n", quesize(file));
+	queunshift(file, 88);
+	printf("[88, 35, 33, 2, 12] (normalement)\n");
+	queprint(file);
+	for (int i=0; i<5; i++)
+		queshift(file);
+	printf("Taille de la file: %d, Normalement: 0\n", quesize(file));
+	printf("File normalement vide, vaut: %d\n", queisempty(file));
+	queclear(file);
 	printf("Normalement rien\n");
-	staprint(pile);
+	queprint(file);
 
 	return 0;
 }

@@ -41,13 +41,13 @@ int staisempty(Stack*);
 // Empile un nouvel élément
 Stack* stapush(Stack*, TYPE);
 
-// Retourne le nombre d'élements contenus dans la pile
+// Retourne le nombre d'éléments contenus dans la pile
 int stasize(Stack*);
 
 // Affiche le contenu de la pile
 void staprint(Stack*);
 
-// Dépile et retourne l'élement dépilé
+// Dépile et retourne l'élément dépilé
 TYPE stapop(Stack*);
 
 // Retourne l'élément de tête sans le dépiler
